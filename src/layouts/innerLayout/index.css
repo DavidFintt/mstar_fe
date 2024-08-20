@@ -1,0 +1,7 @@
+#layout-main{
+    width: 80%;
+    position: absolute;
+    height: 100vh;
+    right: 0;
+    background-color: rgb(235, 235, 235) !important;
+}
