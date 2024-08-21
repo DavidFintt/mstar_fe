@@ -10,6 +10,8 @@ export default function Dashboard() {
   const [cadMercadorias, setCadMercadorias] = useState(false);
   const [consMercadorias, setConsMercadorias] = useState(false);
   const [tipoMercadoria, setTipoMercadoria] = useState(false);
+  const [searchMercadoriaValue, setSearchMercadoriaValue] = useState("");
+  const [mercadoriaDataCopy, setMercadoriaDataCopy] = useState([]);
   const [mercadoriaData, setMercadoriaData] = useState({
     nome: "",
     descricao: "",
@@ -30,10 +32,8 @@ export default function Dashboard() {
     loadMercadorias();
   }, []);
 
-
-
   const loadTipoMercadoria = async () => {
-    try{
+    try {
       const response = await mercadoriaService.tipoMercadoriaLoad();
       setTipoMercadoriaLoad(response.data);
     } catch (error) {
@@ -42,17 +42,17 @@ export default function Dashboard() {
   };
 
   const loadMercadorias = async () => {
-    try{
+    try {
       const response = await mercadoriaService.mercadoriaLoad();
       setMercadoriaLoad(response.data);
+      setMercadoriaDataCopy(response.data);
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const toggleCadMercadorias = (e) => {
     let value = parseInt(e.target.value);
-    console.log(value);
     if (value !== 0) {
       if (value === 1) {
         setCadMercadorias(true);
@@ -95,6 +95,26 @@ export default function Dashboard() {
       const response = await mercadoriaService.tipoMercadoriaRegister(
         tipoMercadoriaData
       );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const searchMercadoria = async () => {
+    try {
+      if (searchMercadoriaValue !== "") {
+        let mercadoriaResult = mercadoriaLoad.filter(
+          (el) =>
+            el.nome === searchMercadoriaValue ||
+            el.numero_registro === parseInt(searchMercadoriaValue)
+        );
+
+        setMercadoriaLoad(mercadoriaResult);
+        return;
+      } else {
+        setMercadoriaLoad(mercadoriaDataCopy);
+        return;
+      }
     } catch (error) {
       console.log(error);
     }
@@ -157,6 +177,13 @@ export default function Dashboard() {
               <div className="d-flex align-items-center">
                 <label className="ml-3">Mercadoria:</label>
                 <input
+                  value={searchMercadoriaValue}
+                  onChange={(e) => setSearchMercadoriaValue(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      searchMercadoria();
+                    }
+                  }}
                   placeholder="Nome ou registro"
                   type="text"
                   className="search-mercadoria form-control"
@@ -242,7 +269,11 @@ export default function Dashboard() {
                       </select>
                     </div>
                     <div className="form-group">
-                      <button onClick={toggleRegisterMercadoria} type="submit" className="btn btn-primary">
+                      <button
+                        onClick={toggleRegisterMercadoria}
+                        type="submit"
+                        className="btn btn-primary"
+                      >
                         Cadastrar mercadoria
                       </button>
                     </div>
@@ -257,6 +288,7 @@ export default function Dashboard() {
                 <Table className="table-mercadorias" striped bordered hover>
                   <thead>
                     <tr>
+                      <th>N°. Registro</th>
                       <th>Nome</th>
                       <th>Descrição</th>
                       <th>Fabricante</th>
@@ -267,13 +299,14 @@ export default function Dashboard() {
                   <tbody>
                     {mercadoriaLoad.map((el) => (
                       <tr>
+                        <td>{el.numero_registro}</td>
                         <td>{el.nome}</td>
                         <td>{el.descricao}</td>
                         <td>{el.fabricante}</td>
                         <td>{el.tipo}</td>
                         <td>{el.estoque}</td>
                       </tr>
-                    ) )}
+                    ))}
                   </tbody>
                 </Table>
               </div>

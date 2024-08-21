@@ -1,9 +1,10 @@
 import "./index.css"
-import clockIcon from "../../assets/sidebar/icons/clock.png"
-import plusIcon from "../../assets/sidebar/icons/plus-icon.png"
 import truckIcon from "../../assets/sidebar/icons/truck-icon.png"
 import unidadeIcon from "../../assets/sidebar/icons/unidade-icon.png"
 import estoqueIcon from "../../assets/sidebar/icons/estoque-icon.png"
+import enterIcon from "../../assets/sidebar/icons/enter-icon.png"
+import { Link } from "react-router-dom"
+
 
 export default function Sidebar() {
     return(
@@ -13,30 +14,44 @@ export default function Sidebar() {
                     <span className="header-title"> MSTAR </span>
                 </div>
                 <div className="container-menus-sidebar">
-                    <a className="sidebar-menu-link" href="/mercadorias/">
+                    <Link className="sidebar-menu-link" to="/movimentacoes/cadastro">
+                        <div className="sidebar-menus">
+                            <img className="icon-menu-sidebar" src={enterIcon}></img>
+                            <span className="menu-sidebar-link">
+                                CADASTRAR MOVIMENTO
+                            </span>
+                        </div>
+                    </Link>
+                </div>
+                <div className="container-menus-sidebar">
+                    <Link className="sidebar-menu-link" to="/mercadorias">
                         <div className="sidebar-menus">
                             <img className="icon-menu-sidebar" src={estoqueIcon}></img>
                             <span className="menu-sidebar-link">
                                 MERCADORIAS
                             </span>
                         </div>
-                    </a>
+                    </Link>
                 </div>
                 <div className="container-menus-sidebar">
-                    <div className="sidebar-menus">
-                        <img className="icon-menu-sidebar" src={truckIcon}></img>
-                        <span className="menu-sidebar-link">
-                            MOVIMENTAÇÕES
-                        </span>
-                    </div>
+                    <Link className="sidebar-menu-link" to="/movimentacoes">
+                        <div className="sidebar-menus">
+                            <img className="icon-menu-sidebar" src={truckIcon}></img>
+                            <span className="menu-sidebar-link">
+                                MOVIMENTAÇÕES
+                            </span>
+                        </div>
+                    </Link>
                 </div>
                 <div className="container-menus-sidebar">
+                    <Link className="sidebar-menu-link" to="/unidades">
                         <div className="sidebar-menus">
                             <img className="icon-menu-sidebar" src={unidadeIcon}></img>
                             <span className="menu-sidebar-link">
                                 UNIDADES
                             </span>
-                    </div>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </>

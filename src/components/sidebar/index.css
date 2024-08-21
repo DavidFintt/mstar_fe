@@ -50,17 +50,17 @@
 }
 
 .sidebar-menu-link{
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .icon-menu-sidebar{
     width: 30px;
-    padding-right: 15px;
+    padding-right: 5px;
 }
 
 .menu-sidebar-link {
     font-family: "Barlow", sans-serif;
     font-weight: 600;
     color: white;
-    font-size: 20PX;
+    font-size: 18px;
 }
