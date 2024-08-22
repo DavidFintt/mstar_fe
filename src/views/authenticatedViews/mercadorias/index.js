@@ -5,6 +5,7 @@ import MercadoriaService from '../../../services/mercadorias'
 import CadastroMercadorias from '../../../components/mercadorias/cadastro'
 import ConsultaMercadoria from '../../../components/mercadorias/consulta'
 import CadastroTipoMercadoria from '../../../components/mercadorias/cadastroTipo'
+import VerifyLogin from '../../../utils/auth'
 
 export default function Dashboard() {
 	const mercadoriaService = new MercadoriaService()
@@ -12,6 +13,10 @@ export default function Dashboard() {
 	const [cadMercadorias, setCadMercadorias] = useState(false)
 	const [consMercadorias, setConsMercadorias] = useState(false)
 	const [tipoMercadoria, setTipoMercadoria] = useState(false)
+
+	useEffect(() => {
+		VerifyLogin()
+	}, [])
 
 	const toggleCadMercadorias = (e) => {
 		let value = parseInt(e.target.value)

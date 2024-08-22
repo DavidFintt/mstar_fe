@@ -2,6 +2,7 @@ import React from 'react'
 import { Table } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import UnidadeService from '../../../services/unidades'
+import VerifyLogin from '../../../utils/auth'
 import './index.css'
 
 export default function Unidades() {
@@ -36,6 +37,7 @@ export default function Unidades() {
 	}
 
 	useEffect(() => {
+		VerifyLogin()
 		loadUnidades()
 	}, [])
 

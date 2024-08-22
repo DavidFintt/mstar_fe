@@ -5,6 +5,7 @@ import UnidadeService from '../../../services/unidades'
 import MercadoriaService from '../../../services/mercadorias'
 import CadastroEntrada from '../../../components/movimentacoes/cadastroEntrada'
 import CadastroSaida from '../../../components/movimentacoes/cadastroSaida'
+import VerifyLogin from '../../../utils/auth'
 import './index.css'
 
 export default function CadastroMovimentos() {
@@ -24,6 +25,7 @@ export default function CadastroMovimentos() {
 	})
 
 	useEffect(() => {
+		VerifyLogin();
 		loadUnidades()
 		loadMercadorias()
 	}, [])

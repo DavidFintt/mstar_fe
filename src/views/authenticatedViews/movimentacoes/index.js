@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import MovimentacoesService from '../../../services/movimentacoes'
 import PdfComponent from '../../../components/movimentacoes/gerarPdf'
 import RelatorioService from '../../../services/relatorios'
+import VerifyLogin from '../../../utils/auth'
 import './index.css'
 
 export default function Movimentacoes() {
@@ -19,6 +20,7 @@ export default function Movimentacoes() {
 	const [saidaDataCopy, setSaidaDataCopy] = useState([])
 
 	useEffect(() => {
+		VerifyLogin()
 		loadEntradas()
 		loadSaidas()
 	}, [])
