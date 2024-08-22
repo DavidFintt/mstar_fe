@@ -6,6 +6,7 @@ import VerifyLogin from '../../../utils/auth'
 import './index.css'
 
 export default function Unidades() {
+	VerifyLogin();
 	const unidadeService = new UnidadeService()
 	const [visualizacao, setVisualizacao] = useState(false)
 	const [cadastro, setCadastro] = useState(false)
@@ -37,7 +38,6 @@ export default function Unidades() {
 	}
 
 	useEffect(() => {
-		VerifyLogin()
 		loadUnidades()
 	}, [])
 

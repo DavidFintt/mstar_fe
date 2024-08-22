@@ -9,6 +9,7 @@ import VerifyLogin from '../../../utils/auth'
 import './index.css'
 
 export default function CadastroMovimentos() {
+	VerifyLogin();
 	const movimentacoesService = new MovimentacoesService()
 	const unidadeService = new UnidadeService()
 	const mercadoriaService = new MercadoriaService()
@@ -25,7 +26,6 @@ export default function CadastroMovimentos() {
 	})
 
 	useEffect(() => {
-		VerifyLogin();
 		loadUnidades()
 		loadMercadorias()
 	}, [])

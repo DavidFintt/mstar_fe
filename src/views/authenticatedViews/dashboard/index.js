@@ -8,10 +8,8 @@ import './index.css'
 
 export default function Dashboard() {
 
-    useEffect(() => {
-        VerifyLogin();
-    })
-    
+    VerifyLogin();
+
 
     return(
         <>

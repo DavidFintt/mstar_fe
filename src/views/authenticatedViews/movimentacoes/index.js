@@ -8,6 +8,7 @@ import VerifyLogin from '../../../utils/auth'
 import './index.css'
 
 export default function Movimentacoes() {
+	VerifyLogin();
 	const movimentacoesService = new MovimentacoesService()
 
 	const [entradas, setEntradas] = useState(false)
@@ -20,7 +21,6 @@ export default function Movimentacoes() {
 	const [saidaDataCopy, setSaidaDataCopy] = useState([])
 
 	useEffect(() => {
-		VerifyLogin()
 		loadEntradas()
 		loadSaidas()
 	}, [])
