@@ -6,11 +6,12 @@ import VerifyLogin from '../../../utils/auth'
 import { useEffect } from 'react';
 import './index.css'
 
-useEffect(() => {
-    VerifyLogin();
-})
-
 export default function Dashboard() {
+
+    useEffect(() => {
+        VerifyLogin();
+    })
+    
 
     return(
         <>
