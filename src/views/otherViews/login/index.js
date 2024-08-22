@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table } from "react-bootstrap";
 import mstarIcon from "../../../assets/logo/mstar-logo.png";
 import { useState } from "react";
 import AuthService from "../../../services/auth";
+import { Link } from "react-router-dom";
 import "./index.css";
 
 export default function Login() {
@@ -10,9 +11,12 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const toggleRegister = () => {
-    window.location.href = "/register";
-  }
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      window.location.href = "/";
+    }
+  })
 
   const toggleEmail = (e) => {
     setEmail(e.target.value);
@@ -68,8 +72,10 @@ export default function Login() {
               >
                 Entrar
               </button>
-
-              <span onClick={toggleLogin} className="link-register">Não possui uma conta? Registre-se aqui.</span>
+              
+              <Link to={"/register"} className="link-register-ref">
+                <span  className="link-register">Não possui uma conta? Registre-se aqui.</span>
+              </Link>
             </div>
           </div>
         </div>

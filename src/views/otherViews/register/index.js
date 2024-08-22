@@ -37,7 +37,7 @@ export default function Register() {
     };
     const response = await authService.register(data);
     if (response.status === 200) {
-      window.confirm("Usuário registrado com sucesso");
+      window.alert("Usuário registrado com sucesso");
       window.location.href = "/login";
     } else {
       alert("Ocorreu um erro");

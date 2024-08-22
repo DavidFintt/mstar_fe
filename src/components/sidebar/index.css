@@ -64,3 +64,17 @@
     color: white;
     font-size: 18px;
 }
+
+.logout-button {
+    width: 60%;
+    background-color: rgba(255, 0, 0, 0.3);
+    position: absolute;
+    bottom: 20px; /* Ajustado para substituir margin-bottom */
+    left: 50%; /* Posiciona o início do botão no meio do contêiner */
+    transform: translateX(-50%); /* Desloca o botão para trás pela metade de sua largura */
+    text-align: center;
+}
+.logout-button:hover {
+    background-color: rgba(255, 0, 0, 0.6);
+
+}

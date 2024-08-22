@@ -1,14 +1,8 @@
 import axios from "axios";
+import api from "../interceptor";
 
 const token = localStorage.getItem("access_token");
 
-const api = axios.create({
-    baseURL: "http://127.0.0.1:5000",
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-    }
-});
 class MercadoriaService {
     async tipoMercadoriaRegister(data) {
         try{

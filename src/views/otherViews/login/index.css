@@ -40,3 +40,13 @@
     margin-left: auto;
     padding-top: 20px;
 }
+
+.link-register-ref {
+    color: rgb(0, 0, 0);
+    text-decoration: none !important;
+}
+
+.link-register-ref:hover{
+    color: rgb(107, 107, 107);
+    text-decoration: none !important;
+}
